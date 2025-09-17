@@ -43,7 +43,7 @@ const FileGrid = ({ files, selectedFiles, onFileSelect, onFileAction, viewMode }
         {files.map((file) => (
           <div
             key={file.id}
-            className={`relative group bg-card border border-border rounded-lg p-3 hover:shadow-lg hover:scale-105 transition-all duration-200 cursor-pointer ${
+            className={`relative group bg-card border border-border rounded-lg p-3 hover:shadow-xl hover:scale-[1.02] hover:border-primary/30 transition-all duration-300 cursor-pointer transform-gpu ${
               isSelected(file.id) ? 'ring-2 ring-primary bg-primary/5' : ''
             }`}
             onClick={() => onFileSelect(file.id)}
@@ -152,7 +152,7 @@ const FileGrid = ({ files, selectedFiles, onFileSelect, onFileAction, viewMode }
         {files.map((file) => (
           <div
             key={file.id}
-            className={`grid grid-cols-12 gap-4 p-4 hover:bg-muted/50 transition-colors cursor-pointer ${
+            className={`grid grid-cols-12 gap-4 p-4 hover:bg-muted/70 hover:shadow-sm transition-all duration-200 cursor-pointer ${
               isSelected(file.id) ? 'bg-primary/5' : ''
             }`}
             onClick={() => onFileSelect(file.id)}
@@ -226,6 +226,17 @@ const FileGrid = ({ files, selectedFiles, onFileSelect, onFileAction, viewMode }
                 }}
               >
                 <Icon name="Eye" size={16} />
+              </Button>
+              <Button
+                variant="ghost"
+                size="icon"
+                className="h-8 w-8"
+                onClick={(e) => {
+                  e.stopPropagation();
+                  onFileAction(file, 'share');
+                }}
+              >
+                <Icon name="Share2" size={16} />
               </Button>
               <Button
                 variant="ghost"
